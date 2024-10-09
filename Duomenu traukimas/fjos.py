@@ -1,9 +1,6 @@
-
 from pathlib import Path
-from sys import path
 import requests
 import pandas as pd
-
 import time
 import ast
 import os
@@ -56,7 +53,6 @@ def meteo_file_to_pd(file_name : Path):
     
    
 
-
 def litgrid_data_to_pd(file_name: Path):
     """
     Function takes path to a file, reads file data, converts data to Pandas dataframe, prepares for further analysis.
@@ -72,21 +68,4 @@ def litgrid_data_to_pd(file_name: Path):
     elektr_duom['Hour'] = elektr_duom['Time'].dt.hour
     elektr_duom = elektr_duom.sort_values(by='Time')
     return elektr_duom
-
-
-# def duom_paruosimas(pd_station: pd.DataFrame):
-#     """
-#     F-ja sutvarko DF ir paruosia analizei
-#     """
-#     pd_station = pd_station.drop_duplicates()
-#     pd_station = pd_station[['observationTimeUtc','airTemperature','cloudCover']]
-#     pd_station = pd_station.bfill()
-#     pd_station = pd_station.rename(columns={'observationTimeUtc' : 'Time(Meteo)'})
-#     pd_station['airTemperature'] = round(pd_station['airTemperature'])
-#     pd_station['cloudCover'] = round(pd_station['cloudCover'], -1)
-#     pd_station = pd_station.reset_index(drop=True)
-#     return pd_station
-
-
-# def geriausio_modelio_parinkimas_cv10(model : 'Taikomas ML modelis', Xtrain : array, ytrain : array):
 
